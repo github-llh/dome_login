@@ -19,7 +19,7 @@
 <body>
 <center>
       <span style="color: red">${error}</span>
-      <form action="/easyLogin/register.do" method="post">
+      <form action="/register.do" method="post">
             用户名：<input type="text" name="name"><br>
             密码：<input type="text" name="pwd"><br>
             <button>注册</button>

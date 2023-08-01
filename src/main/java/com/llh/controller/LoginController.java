@@ -46,12 +46,4 @@ public class LoginController {
             return "login_sms";
       }
 
-      /**
-       * 前往第三方登录页面
-       * @return
-       */
-      @RequestMapping("gotoGiteeLogin.do")
-      public String gotoGiteeLogin(){
-            return "login_gitee";
-      }
 }

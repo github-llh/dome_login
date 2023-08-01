@@ -23,7 +23,7 @@ public class EasyLoginController {
       @Autowired
       EasyUserService easyUserService;
 
-      @RequestMapping("/easyLogin/login.do")
+      @RequestMapping("login.do")
       public String login(@Valid EasyUser user, BindingResult result, Model model, HttpServletResponse response){
             if(result.hasErrors()){
                   String message = result.getAllErrors().get(0).getDefaultMessage();
@@ -51,7 +51,7 @@ public class EasyLoginController {
             return "success";
       }
 
-      @RequestMapping("/easyLogin/register.do")
+      @RequestMapping("register.do")
       public String register(@Valid EasyUser user,BindingResult result,Model model,HttpServletResponse response){
             if(result.hasErrors()){
                   String message = result.getAllErrors().get(0).getDefaultMessage();

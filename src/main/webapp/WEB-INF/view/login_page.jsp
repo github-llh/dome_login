@@ -20,7 +20,7 @@
 <center>
       <a href="gotoEasyLogin.do">普通登录</a>
       <a href="gotoSmsLogin.do">短信登录</a>
-      <a href="gotoGiteeLogin.do">第三方登录</a>
+      <a href="https://gitee.com/oauth/authorize?client_id=130d9618bac29926edb690502c938adec33aca70be5f2bc2d90c79d7a13bb875&redirect_uri=http://localhost:8080/callback.do&response_type=code">第三方登录</a>
       <a>第三方绑定</a>
 </center>
 </body>

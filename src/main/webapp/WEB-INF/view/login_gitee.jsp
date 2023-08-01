@@ -17,6 +17,10 @@
       <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
 </head>
 <body>
-
+<center>
+      昵称：${nickName}
+      头像：<img src="${avatarUrl}">
+      <a href="/gotoEasyLogin.do">返回登录</a>
+</center>
 </body>
 </html>
