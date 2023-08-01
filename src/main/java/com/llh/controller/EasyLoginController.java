@@ -48,7 +48,7 @@ public class EasyLoginController {
             model.addAttribute("user",easyUserService.getEasyUsers());
 
             TokenUtils.responseTokenByCookie(UserDB,response);
-            return "success";
+            return "redirect:list.do";
       }
 
       @RequestMapping("register.do")

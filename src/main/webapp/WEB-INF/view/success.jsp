@@ -19,7 +19,7 @@
 </head>
 <body>
 <center>
-      <table border="1">
+      <table border="1" style="text-align: center">
             <tr>
                   <td>编号</td>
                   <td>用户名</td>

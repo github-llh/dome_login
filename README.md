@@ -1,7 +1,7 @@
 # dome_login
 ssm架构，集成spring、springMVC和mybatis
 
-实现员工信息表基础的crud
+实现商品信息表基础的crud
 
 实现普通登录、注册（token令牌验证）
 
