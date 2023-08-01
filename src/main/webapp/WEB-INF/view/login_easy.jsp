@@ -18,8 +18,8 @@
 </head>
 <body>
       <center>
-            <span style="color: red"></span>
-            <form action="/easyLogin/login.do">
+            <span style="color: red">${error}</span>
+            <form action="/easyLogin/login.do" method="post">
                   用户名：<input type="text" name="name"><br>
                   密码：<input type="text" name="pwd"><br>
                   <button>登录</button>
