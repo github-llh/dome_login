@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.llh.mapper.ReportMapper">
+      <select id="getZhus" resultType="com.llh.domain.Zhu">
+            select count(*) xdata, c.name ydata
+            from c_house h
+            left join c_city c on h.cid = c.id
+            <if test="status!=null and status!=''">
+                  where status=#{status}
+            </if>
+            group by h.cid
+      </select>
+      <select id="getBings" resultType="com.llh.domain.Bing">
+            select count(*) value, c.name name
+            from c_house h
+            left join c_city c on h.cid = c.id
+            <if test="status!=null and status!=''">
+                  where status=#{status}
+            </if>
+            group by h.cid
+      </select>
+</mapper>

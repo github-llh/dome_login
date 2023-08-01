@@ -19,7 +19,7 @@
 </head>
 <body>
 <center>
-      <form>
+      <form action="/list.do" method="post">
             <table border="1" style="text-align: center">
                   <tr>
                         <td colspan="8">
