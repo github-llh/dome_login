@@ -1,2 +1,2 @@
 # dome_login
-登录案例
+ssm架构，集成spring、springMVC、mybatis的crud
