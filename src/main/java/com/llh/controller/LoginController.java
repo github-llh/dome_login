@@ -29,6 +29,15 @@ public class LoginController {
       }
 
       /**
+       * 前往注册页面
+       * @return
+       */
+      @RequestMapping("gotoEasyRegister.do")
+      public String gotoEasyRegister(){
+            return "login_register";
+      }
+
+      /**
        * 前往短信登录页面
        * @return
        */

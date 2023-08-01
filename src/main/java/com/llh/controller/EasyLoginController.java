@@ -1,5 +1,6 @@
 package com.llh.controller;
 
+import cn.hutool.core.lang.UUID;
 import com.llh.domain.EasyUser;
 import com.llh.service.EasyUserService;
 import com.llh.utils.Md5Utils;
@@ -23,7 +24,7 @@ public class EasyLoginController {
       EasyUserService easyUserService;
 
       @RequestMapping("/easyLogin/login.do")
-      public String login(@Valid EasyUser user, Model model, BindingResult result, HttpServletResponse response){
+      public String login(@Valid EasyUser user, BindingResult result, Model model, HttpServletResponse response){
             if(result.hasErrors()){
                   String message = result.getAllErrors().get(0).getDefaultMessage();
                   model.addAttribute("error",message);
@@ -48,5 +49,31 @@ public class EasyLoginController {
 
             TokenUtils.responseTokenByCookie(UserDB,response);
             return "success";
+      }
+
+      @RequestMapping("/easyLogin/register.do")
+      public String register(@Valid EasyUser user,BindingResult result,Model model,HttpServletResponse response){
+            if(result.hasErrors()){
+                  String message = result.getAllErrors().get(0).getDefaultMessage();
+                  model.addAttribute("error",message);
+                  return "login_register";
+            }
+
+            EasyUser UserDB = easyUserService.getEasyUserByName(user.getName());
+            if(UserDB!=null){
+                  model.addAttribute("error","该用户已存在");
+                  return "login_register";
+            }
+
+            String salt = UUID.randomUUID().toString().substring(0, 8);
+            String md5String = Md5Utils.getMD5String(user.getPwd() + salt);
+            EasyUser easyUser = EasyUser.builder()
+                    .name(user.getName())
+                    .pwd(md5String)
+                    .salt(salt)
+                    .build();
+
+            easyUserService.addEasyUser(easyUser);
+            return "login_easy";
       }
 }

@@ -26,4 +26,9 @@ public class EasyUserServiceImpl implements EasyUserService {
       public List<EasyUser> getEasyUsers() {
             return easyUserMapper.getEasyUsers();
       }
+
+      @Override
+      public void addEasyUser(EasyUser user) {
+            easyUserMapper.addEasyUser(user);
+      }
 }

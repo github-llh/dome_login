@@ -11,4 +11,5 @@ import java.util.List;
 public interface EasyUserService {
       EasyUser getEasyUserByName(String name);
       List<EasyUser> getEasyUsers();
+      void addEasyUser(EasyUser user);
 }
