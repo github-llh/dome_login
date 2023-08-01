@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/mvc
+       					   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <context:component-scan base-package="com.llh.controller,com.llh.aop"></context:component-scan>
+    <!-- 对模型视图添加前后缀 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+        <!--将view对象变成JstlView。可以支持快速国际化-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
+    <!-- 文件上传，不配置会导致获取不到正常表单数据 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="5242800"/>
+    </bean>
+    <!--开启aop-->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+    <!--配置一个拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash;拦截全部请求&ndash;&gt;-->
+<!--            <mvc:mapping path="/*"/>-->
+<!--            &lt;!&ndash;排除&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/gotoLogin.do"/>-->
+<!--            <mvc:exclude-mapping path="/login.do"/>-->
+<!--            <mvc:exclude-mapping path="/callback.do"/>-->
+<!--            <bean class="com.llh.interceptor.LoginInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+</beans>
