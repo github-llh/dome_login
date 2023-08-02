@@ -24,8 +24,18 @@ public class ReportController {
             return reportMapper.getZhus(status);
       }
 
+      @RequestMapping("zhu2.do")
+      public @ResponseBody List<Zhu> zhu2(String status){
+            return reportMapper.getZhus2(status);
+      }
+
       @RequestMapping("bing.do")
       public @ResponseBody List<Bing> bing(String status){
             return reportMapper.getBings(status);
+      }
+
+      @RequestMapping("xian.do")
+      public @ResponseBody List<Zhu> xian(String status){
+            return reportMapper.getXians(status);
       }
 }

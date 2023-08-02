@@ -12,5 +12,7 @@ import java.util.List;
  */
 public interface ReportMapper {
       List<Zhu> getZhus(@Param("status") String status);
+      List<Zhu> getZhus2(@Param("status") String status);
       List<Bing> getBings(@Param("status") String status);
+      List<Zhu> getXians(@Param("status") String status);
 }

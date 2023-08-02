@@ -46,7 +46,7 @@
                               </select>
                               <select name="orderType">
                                     <option value="">--请选择--</option>
-                                    <option value="asc" selected>正序</option>
+                                    <option value="asc" ${query.orderType=="asc"?"selected":""}>正序</option>
                                     <option value="desc" ${query.orderType=="desc"?"selected":""}>倒序</option>
                               </select>
                               <button>查询</button>

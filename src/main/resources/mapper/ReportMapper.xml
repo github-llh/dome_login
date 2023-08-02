@@ -11,7 +11,25 @@
             group by h.cid
       </select>
       <select id="getBings" resultType="com.llh.domain.Bing">
-            select count(*) value, c.name name
+            select count(*) value,p.name name
+            from c_house h
+            left join c_province  p on h.pid=p.id
+            <if test="status!=null and status!=''">
+                  where status=#{status}
+            </if>
+            group by h.pid
+      </select>
+      <select id="getXians" resultType="com.llh.domain.Zhu">
+            select count(*) xdata,q.name ydata
+            from c_house h
+            left join c_qu  q on h.qid=q.id
+            <if test="status!=null and status!=''">
+                  where status=#{status}
+            </if>
+            group by h.qid
+      </select>
+      <select id="getZhus2" resultType="com.llh.domain.Zhu">
+            select count(*) xdata, c.name ydata
             from c_house h
             left join c_city c on h.cid = c.id
             <if test="status!=null and status!=''">
