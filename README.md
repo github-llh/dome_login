@@ -9,6 +9,6 @@ ssm架构，集成spring、springMVC和mybatis
 
 实现短信登录（redis缓存）
 
-实现楼盘信息统计报表，竖状、饼状以及折现图
+实现楼盘信息统计报表，竖状、饼状以及折线图
 
 实现excel数据导出
