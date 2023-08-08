@@ -7,7 +7,7 @@ ssm架构，集成spring、springMVC和mybatis
 
 实现gitee第三方登录与绑定
 
-实现短信登录（redis缓存）
+实现短信登录与验证码登录（redis缓存）
 
 实现楼盘信息统计报表，竖状、饼状以及折线图
 
