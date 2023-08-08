@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -59,8 +60,15 @@ public class GiteeController {
 			TokenUtils.responseTokenByCookie(userDB, response);
 		}
 
-		model.addAttribute("nickName", login);
-		model.addAttribute("avatarUrl", avatar_url);
+		return "redirect:success.do";
+	}
+
+	@RequestMapping("/success.do")
+	public String success(Model model, HttpServletRequest request){
+		GiteeUser user = TokenUtils.getLoginUserFromRequest(request, GiteeUser.class);
+
+		model.addAttribute("nickName", user.getNickName());
+		model.addAttribute("avatarUrl", user.getAvatarUrl());
 		return "login_gitee";
 	}
 }
