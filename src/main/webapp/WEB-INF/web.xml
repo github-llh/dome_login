@@ -9,7 +9,8 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             <!--除spring-mvc.xml不用指定，其余都要指定-->
-            classpath:conf/spring-ioc.xml
+            classpath:conf/spring-ioc.xml,
+            classpath:conf/spring-redis.xml
         </param-value>
     </context-param>
     <!--中文乱码过滤器-->

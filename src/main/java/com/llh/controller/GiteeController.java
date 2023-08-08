@@ -20,47 +20,47 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class GiteeController {
-      @Autowired
-      GiteeUserService giteeUserService;
+	@Autowired
+	GiteeUserService giteeUserService;
 
-      @RequestMapping("callback.do")
-      public String callback(String code, HttpServletResponse response, Model model){
-            JSONObject userInfoJson = GiteeUtils.getGiteeUserInfoJson(code);
+	@RequestMapping("callback.do")
+	public String callback(String code, HttpServletResponse response, Model model) {
+		JSONObject userInfoJson = GiteeUtils.getGiteeUserInfoJson(code);
 
-            String name = userInfoJson.getString("name");
-            String login = userInfoJson.getString("login");
-            String avatar_url = userInfoJson.getString("avatar_url");
-            Integer id = userInfoJson.getInteger("id");
+		String name = userInfoJson.getString("name");
+		String login = userInfoJson.getString("login");
+		String avatar_url = userInfoJson.getString("avatar_url");
+		Integer id = userInfoJson.getInteger("id");
 
-            GiteeUser userDB = giteeUserService.getGiteeUserById(id);
-            if(userDB==null){
-                  String str = "123";
-                  String salt = UUID.randomUUID().toString().substring(0, 8);
-                  String md5String = Md5Utils.getMD5String(str + salt);
+		GiteeUser userDB = giteeUserService.getGiteeUserById(id);
+		if (userDB == null) {
+			String str = "123";
+			String salt = UUID.randomUUID().toString().substring(0, 8);
+			String md5String = Md5Utils.getMD5String(str + salt);
 
-                  GiteeUser giteeUser = GiteeUser.builder()
-                          .name(name)
-                          .salt(salt)
-                          .pwd(md5String)
-                          .giteeId(id)
-                          .nickName(login)
-                          .avatarUrl(avatar_url)
-                          .build();
+			GiteeUser giteeUser = GiteeUser.builder()
+				  .name(name)
+				  .salt(salt)
+				  .pwd(md5String)
+				  .giteeId(id)
+				  .nickName(login)
+				  .avatarUrl(avatar_url)
+				  .build();
 
-                  giteeUserService.addGiteeUser(giteeUser);
+			giteeUserService.addGiteeUser(giteeUser);
 
-                  TokenUtils.responseTokenByCookie(giteeUser,response);
-            }else{
-                  userDB.setNickName(login);
-                  userDB.setAvatarUrl(avatar_url);
+			TokenUtils.responseTokenByCookie(giteeUser, response);
+		} else {
+			userDB.setNickName(login);
+			userDB.setAvatarUrl(avatar_url);
 
-                  giteeUserService.updateGiteeUser(userDB);
+			giteeUserService.updateGiteeUser(userDB);
 
-                  TokenUtils.responseTokenByCookie(userDB,response);
-            }
+			TokenUtils.responseTokenByCookie(userDB, response);
+		}
 
-            model.addAttribute("nickName",login);
-            model.addAttribute("avatarUrl",avatar_url);
-            return "login_gitee";
-      }
+		model.addAttribute("nickName", login);
+		model.addAttribute("avatarUrl", avatar_url);
+		return "login_gitee";
+	}
 }
